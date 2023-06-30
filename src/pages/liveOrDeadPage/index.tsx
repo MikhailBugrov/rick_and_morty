@@ -1,6 +1,6 @@
 import { useGetCharacterByIdQuery } from "../../api/ApiRickAndMorty";
 import { useState } from "react";
-import { Loading } from "../loading";
+import { Loading } from "../../components/loading";
 import AnswerDisplay from './AnswerDisplay';
 import { MAX_CHARACTERS } from "../../constants/constants";
 
@@ -36,6 +36,8 @@ function LiveOrDead() {
     setCharacterId(Math.floor(Math.random() * 826) + 1);
   }
 
+  const status = data?.character.status === answer ? 'correct' : 'incorrect';
+
   return (
     <Loading isFetching={isLoading}>
       <Stack>
@@ -59,10 +61,7 @@ function LiveOrDead() {
             <CardMedia component="img" image={data?.character.image} alt={data?.character.name} />
             {!data?.character && <Typography>No results</Typography>}
             <Box height={'70px'} mt={'20px'}>
-              <AnswerDisplay
-                status={answer ? (data?.character.status === answer ? 'correct' : 'incorrect') : null}
-                onNextQuestion={handleAnswer}
-              />
+              <AnswerDisplay status={answer ? status : null} onNextQuestion={handleAnswer} />
             </Box>
           </Card>
         </div>

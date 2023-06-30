@@ -1,9 +1,9 @@
-import { useGetCharactersQuery } from '../../api/ApiRickAndMorty';
+import { useGetCharactersQuery } from '../../../api/ApiRickAndMorty';
 import { Link } from "react-router-dom";
 
-import { Loading } from '../loading';
-import { useQueryStringParams } from '../../hooks/useQueryStringParams';
-import { useDebounce } from '../../hooks/useDebounce';
+import { Loading } from '../../../components/loading';
+import { useQueryStringParams } from '../../../hooks/useQueryStringParams';
+import { useDebounce } from '../../../hooks/useDebounce';
 
 import {
   Stack,

@@ -1,8 +1,8 @@
-import { useGetLocationsQuery } from '../../api/ApiRickAndMorty';
+import { useGetLocationsQuery } from '../../../api/ApiRickAndMorty';
 import { Link } from "react-router-dom";
-import { Loading } from '../loading';
-import { useQueryStringParams } from '../../hooks/useQueryStringParams';
-import { useDebounce } from '../../hooks/useDebounce';
+import { Loading } from '../../../components/loading';
+import { useQueryStringParams } from '../../../hooks/useQueryStringParams';
+import { useDebounce } from '../../../hooks/useDebounce';
 
 import {
   useMediaQuery,

@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
 
-import HomePage from './features/homePage';
-import Navigate from './features/navigate';
-import Footer from './features/footer';
-import CharactersList from './features/charactersList';
-import CharacterDetails from './features/characterDetails';
-import EpisodesList from './features/episodesList';
-import EpisodeDetails from './features/episodeDetails';
-import LocationsList from './features/locationsList';
-import LocationDetails from './features/locationDetails';
-import LiveOrDead from './features/liveOrDead';
-import Page404 from './features/404';
+import HomePage from './pages/homePage';
+import Navigate from './components/navigate';
+import Footer from './components/footer';
+import CharactersList from './pages/characterPage/charactersList';
+import CharacterDetails from './pages/characterPage/characterDetails';
+import EpisodesList from './pages/episodePage/episodesList';
+import EpisodeDetails from './pages/episodePage/episodeDetails';
+import LocationsList from './pages/locationPage/locationsList';
+import LocationDetails from './pages/locationPage/locationDetails';
+import LiveOrDead from './pages/liveOrDeadPage';
+import Page404 from './pages/404Page';
 
 function App() {
   return (

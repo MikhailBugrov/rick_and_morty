@@ -1,6 +1,6 @@
 import { useGetCharacterByIdQuery } from '../../../api/ApiRickAndMorty';
 import { useEffect, useState, useRef } from "react";
-import { Loading } from '../../loading';
+import { Loading } from '../../../components/loading';
 import { steps } from './steps';
 import Questions from './Questions';
 import CardCharacter from './CardCharacter';

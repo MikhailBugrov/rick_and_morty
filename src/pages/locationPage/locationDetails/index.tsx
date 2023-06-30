@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useGetEpisodeByIdQuery } from '../../api/ApiRickAndMorty';
+import { useGetLocationByIdQuery } from '../../../api/ApiRickAndMorty';
 import { Link } from "react-router-dom";
-import { Loading } from '../loading';
+import { Loading } from '../../../components/loading';
 
 import { Close as CloseIcon, ExpandMore } from '@mui/icons-material';
 import {
@@ -16,20 +16,20 @@ import {
   AccordionDetails
 } from '@mui/material';
 
-function EpisodeDetalis() {
-  const { data, isFetching } = useGetEpisodeByIdQuery(Number(useParams().id));
+
+function LocationDetalis() {
+  const { data, isFetching } = useGetLocationByIdQuery(Number(useParams().id));
   const navigate = useNavigate();
 
   return (
     <Loading isFetching={isFetching}>
       <Stack>
-        {data?.episode && (
+        {data?.location && (
           <div>
             <Card>
-
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Typography variant="h5" sx={{ flexGrow: 1, pl: 6 }}>
-                  {data.episode.episode}
+                  {data.location.name}
                 </Typography>
                 <IconButton onClick={() => navigate(-1)}>
                   <CloseIcon />
@@ -37,20 +37,20 @@ function EpisodeDetalis() {
               </Box>
 
               <Typography>
-                Name: {data.episode.name}
+                Name: {data.location.type}
                 <br />
-                Air date: {data.episode.air_date}
+                Air date: {data.location.dimension}
               </Typography>
 
               <Accordion>
-                <AccordionSummary expandIcon={<ExpandMore />} >
+                <AccordionSummary expandIcon={<ExpandMore />}>
                   Characters
                 </AccordionSummary>
                 <AccordionDetails>
-                  {data.episode.characters?.map(character => (
-                    <Box key={character.id}>
-                      <Button component={Link} to={`/characters/${character.id}`}>
-                        {character.name}
+                  {data.location.residents?.map(resident => (
+                    <Box key={resident.id}>
+                      <Button component={Link} to={`/characters/${resident.id}`}>
+                        {resident.name}
                       </Button>
                     </Box>
                   ))}
@@ -65,4 +65,4 @@ function EpisodeDetalis() {
   );
 }
 
-export default EpisodeDetalis;
+export default LocationDetalis;

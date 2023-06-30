@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useGetCharacterByIdQuery } from '../../api/ApiRickAndMorty';
+import { useGetCharacterByIdQuery } from '../../../api/ApiRickAndMorty';
 import { Link } from "react-router-dom";
-import { Loading } from '../loading';
+import { Loading } from '../../../components/loading';
 
 import { Close as CloseIcon, ExpandMore } from '@mui/icons-material';
 import {
