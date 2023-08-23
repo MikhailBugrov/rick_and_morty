@@ -1,21 +1,14 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { gql } from 'graphql-request';
-import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query';
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { gql } from "graphql-request";
+import { graphqlRequestBaseQuery } from "@rtk-query/graphql-request-base-query";
 
-import {
-  Character,
-  CharacterList,
-  Location,
-  LocationList,
-  Episode,
-  EpisodeList,
-} from './types';
+import { Character, CharacterList, Location, LocationList, Episode, EpisodeList } from "./types";
 
 export const rickAndMortyApi = createApi({
-  reducerPath: 'rickAndMortyApi',
-  baseQuery: graphqlRequestBaseQuery({ url: 'https://rickandmortyapi.com/graphql' }),
+  reducerPath: "rickAndMortyApi",
+  baseQuery: graphqlRequestBaseQuery({ url: "https://rickandmortyapi.com/graphql" }),
   endpoints: (builder) => ({
-    getCharacters: builder.query<CharacterList, { page?: number; filter?: { name?: string; status?: string; } }>({
+    getCharacters: builder.query<CharacterList, { page?: number; filter?: { name?: string; status?: string } }>({
       query: (args) => ({
         document: gql`
           query ($page: Int, $filter: FilterCharacter) {

@@ -1,22 +1,24 @@
-export const TABS = [
+const TABS = [
   {
-    label: 'Home',
-    route: '/',
+    label: "Home",
+    route: "/",
   },
   {
-    label: 'Characters',
-    route: '/characters',
+    label: "Characters",
+    route: "/characters",
   },
   {
-    label: 'Locations',
-    route: '/locations',
+    label: "Locations",
+    route: "/locations",
   },
   {
-    label: 'Episodes',
-    route: '/episodes',
+    label: "Episodes",
+    route: "/episodes",
   },
   {
-    label: 'Live or dead',
-    route: '/liveordead',
-  }
+    label: "Live or dead",
+    route: "/liveordead",
+  },
 ];
+
+export default TABS;

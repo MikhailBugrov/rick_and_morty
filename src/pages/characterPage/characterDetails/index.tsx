@@ -1,21 +1,18 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useGetCharacterByIdQuery } from '../../../api/ApiRickAndMorty';
-import { Link } from "react-router-dom";
-import { Loading } from '../../../components/loading';
-
-import { Close as CloseIcon, ExpandMore } from '@mui/icons-material';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Close as CloseIcon, ExpandMore } from "@mui/icons-material";
 import {
-  Stack,
   Box,
-  Card,
   Button,
   IconButton,
   CardMedia,
   Typography,
   Accordion,
   AccordionSummary,
-  AccordionDetails
-} from '@mui/material';
+  AccordionDetails,
+} from "@mui/material";
+import { useGetCharacterByIdQuery } from "../../../api/ApiRickAndMorty";
+import Loading from "../../../components/loading";
+import { CenteredBox, CardImg } from "../../../styles";
 
 const CharacterDetalis = () => {
   const { data, isFetching } = useGetCharacterByIdQuery(Number(useParams().id));
@@ -23,51 +20,41 @@ const CharacterDetalis = () => {
 
   return (
     <Loading isFetching={isFetching}>
-      <Stack>
-        {data?.character && (
-          <div>
-            <Card>
-              
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="h5">
-                  {data.character.name}
-                </Typography>
-                <IconButton onClick={() => navigate(-1)}>
-                  <CloseIcon />
-                </IconButton>
-              </Box>
+      <CenteredBox>
+        <CardImg>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="h5">{data?.character.name}</Typography>
+            <IconButton onClick={() => navigate(-1)}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
 
-              <CardMedia component="img" image={data.character.image} alt={data.character.name} />
-              <Typography>
-                Status: {data.character.status}
-                <br />
-                Origin: {data.character.origin.name}
-              </Typography>
-              <Button component={Link} to={`/locations/${data.character.location.id}`}>
-                Location: {data.character.location.name}
-              </Button>
+          <CardMedia component="img" image={data?.character.image} alt={data?.character.name} />
+          <Typography>
+            Status: {data?.character.status}
+            <br />
+            Origin: {data?.character.origin.name}
+          </Typography>
+          <Button component={Link} to={`/locations/${data?.character.location.id}`}>
+            Location: {data?.character.location.name}
+          </Button>
 
-              <Accordion>
-                <AccordionSummary expandIcon={<ExpandMore />} >
-                  Episodes
-                </AccordionSummary>
-                <AccordionDetails>
-                  {data.character.episode?.map(episode => (
-                    <Box key={episode.id}>
-                      <Button component={Link} to={`/episodes/${episode.id}`}>
-                        {episode.episode} <br /> {episode.name}
-                      </Button>
-                    </Box>
-                  ))}
-                </AccordionDetails>
-              </Accordion>
-
-            </Card>
-          </div>
-        )}
-      </Stack>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMore />}>Episodes</AccordionSummary>
+            <AccordionDetails>
+              {data?.character.episode?.map((episode) => (
+                <Box key={episode.id}>
+                  <Button component={Link} to={`/episodes/${episode.id}`}>
+                    {episode.episode} <br /> {episode.name}
+                  </Button>
+                </Box>
+              ))}
+            </AccordionDetails>
+          </Accordion>
+        </CardImg>
+      </CenteredBox>
     </Loading>
   );
-}
+};
 
 export default CharacterDetalis;

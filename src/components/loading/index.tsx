@@ -1,23 +1,24 @@
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import React from "react";
+
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface IProps {
   isFetching: boolean;
   children: React.ReactNode;
 }
 
-export const Loading = ({ isFetching, children }: IProps) => {
+const Loading = ({ isFetching, children }: IProps) => {
   if (isFetching) {
     return (
       <div>
         <Box
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)'
-          }}
-        >
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "50vh",
+          }}>
           <CircularProgress color="inherit" />
         </Box>
       </div>
@@ -26,6 +27,4 @@ export const Loading = ({ isFetching, children }: IProps) => {
   return <div>{children}</div>;
 };
 
-
-
-
+export default Loading;
